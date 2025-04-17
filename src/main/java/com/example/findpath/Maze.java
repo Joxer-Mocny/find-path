@@ -7,6 +7,20 @@ public class Maze {
 
     public Maze(char[][] grid) {
         this.grid = grid;
+
+        int countS = 0;
+        int countX = 0;
+
+        for (char[] row : grid) {
+            for (char cell : row) {
+                if (cell == 'S') countS++;
+                if (cell == 'X') countX++;
+            }
+        }
+
+        if (countS != 1 || countX != 1) {
+            throw new IllegalArgumentException("The maze must contain exactly one 'S' and one 'X'.");
+        }
     }
 
     public int getHeight() {
